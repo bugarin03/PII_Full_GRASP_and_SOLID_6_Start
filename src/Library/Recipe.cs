@@ -19,7 +19,7 @@ namespace Full_GRASP_And_SOLID
 
         public int TotalTime { get; set; }
 
-        public bool Cooked { get; private set; }
+        public bool Cooked { get; private set; } = false;
 
         // Agregado por Creator
         public void AddStep(Product input, double quantity, Equipment equipment, int time)
