@@ -8,7 +8,7 @@ namespace Full_GRASP_And_SOLID
         void TimeOut();
     }
 
-    public class CountdownTimer
+    public class CountdownTimer 
     {
         private TimerClient client;
 

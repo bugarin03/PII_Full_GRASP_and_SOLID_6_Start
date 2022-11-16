@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Full_GRASP_And_SOLID
 {
@@ -15,6 +16,10 @@ namespace Full_GRASP_And_SOLID
         private IList<BaseStep> steps = new List<BaseStep>();
 
         public Product FinalProduct { get; set; }
+
+        public int TotalTime { get; set; }
+
+        public bool Cooked { get; set; }
 
         // Agregado por Creator
         public void AddStep(Product input, double quantity, Equipment equipment, int time)
@@ -61,6 +66,27 @@ namespace Full_GRASP_And_SOLID
             }
 
             return result;
+        }
+
+        // Agregado por Expert
+        public int GetCookTime()
+        {
+            foreach (BaseStep step in steps)
+            {
+                this.TotalTime += step.Time;
+            }
+            return this.TotalTime;
+        }
+        // Se aplica Creator para poder pasar los objetos como parametros al método 
+        public void Cook()
+        {
+            // Con el if me aseguro que la receta se haya cocinado una única vez.
+            if (!this.Cooked)
+            {
+                CountdownTimer timer = new CountdownTimer();
+                TimerClient timeClient = new Timed(this);
+                timer.Register(this.GetCookTime(), timeClient);
+            }
         }
     }
 }
