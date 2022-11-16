@@ -87,6 +87,10 @@ namespace Full_GRASP_And_SOLID
                 TimerClient timeClient = new Timed(this);
                 timer.Register(this.GetCookTime(), timeClient);
             }
+            else
+            {
+                Console.WriteLine("La receta fue previamente cocinada.");
+            }
         }
 
         public void Finished()
