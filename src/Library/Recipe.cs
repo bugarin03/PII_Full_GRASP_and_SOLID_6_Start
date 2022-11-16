@@ -93,9 +93,24 @@ namespace Full_GRASP_And_SOLID
             }
         }
 
-        public void Finished()
+        private void Finished()
         {
             this.Cooked = true;
+        }
+
+        // Aplico ISP 
+        private class Timed : TimerClient
+        {
+            Recipe Recipe { get; set; }
+            public Timed(Recipe recipe)
+            {
+                this.Recipe = recipe;
+            }
+
+            public void TimeOut()
+            {
+                this.Recipe.Finished();
+            }
         }
     }
 }
