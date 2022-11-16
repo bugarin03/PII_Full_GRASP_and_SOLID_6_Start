@@ -11,7 +11,7 @@ namespace Full_GRASP_And_SOLID
 
         public void TimeOut()
         {
-            this.Recipe.Cooked = true;
+            this.Recipe.Finished();
         }
     }
 }
